@@ -4,13 +4,15 @@ from setuptools import find_packages, setup
 
 setup(
     name='cmsplugin_gallery',
-    version='0.1.7',
-    author='Piotr Kilczuk',
-    author_email='p.kilczuk@neumea.pl',
-    url='http://github.com/centralniak',
+    version='0.0.1',
+    author='Tomas Neme',
+    author_email='lacrymology@gmail.com',
+    url='http://github.com/Lacrymology',
     description = 'DjangoCMS image gallery plugin with drag&drop '
-                  'reordering in admin, support for thumbnails and '
-                  'jQueryTOOLS overlay.',
+                  'reordering in admin, special support for '
+                  'thumbnails and s3Slider '
+                  'http://www.serie3.info/s3slider/demonstration.html '
+                  'Forked from https://github.com/centralniak/cmsplugin_gallery',
     packages=find_packages(),
     provides=['cmsplugin_gallery', ],
     include_package_data=True,
