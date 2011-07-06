@@ -16,7 +16,7 @@ class GalleryPlugin(CMSPlugin):
 
     template = models.CharField(max_length=255,
                                 choices=TEMPLATE_CHOICES,
-                                default='cmsplugin_gallery/gallery.html',
+                                default='cmsplugin_s3slider/gallery.html',
                                 editable=len(TEMPLATE_CHOICES) > 1)
 
     def __unicode__(self):

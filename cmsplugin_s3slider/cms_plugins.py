@@ -11,7 +11,7 @@ class CMSGalleryPlugin(CMSPluginBase):
     model = models.GalleryPlugin
     inlines = [admin.ImageInline, ]
     name = _('Image gallery')
-    render_template = 'cmsplugin_gallery/gallery.html'
+    render_template = 'cmsplugin_s3slider/gallery.html'
 
     def render(self, context, instance, placeholder):
         context.update({
