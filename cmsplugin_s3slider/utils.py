@@ -11,7 +11,7 @@ TEMPLATES = localdata.TEMPLATES
 
 def autodiscover_templates():
     '''
-    Autodiscovers cmsplugin_gallery templates the way
+    Autodiscovers cmsplugin_s3slider templates the way
     'django.template.loaders.filesystem.Loader' and
     'django.template.loaders.app_directories.Loader' work.
     '''
@@ -28,13 +28,13 @@ def autodiscover_templates():
         return TEMPLATES
 
     #override templates from settings
-    override_dir = getattr(settings, 'CMSPLUGIN_GALLERY_TEMPLATES', None)
+    override_dir = getattr(settings, 'CMSPLUGIN_S3SLIDER_TEMPLATES', None)
     if override_dir:
         return sorted_templates(override_dir)
 
     templates = []
 #    templates = [
-#        ('cmsplugin_gallery/gallery.html', 'gallery.html'),
+#        ('cmsplugin_s3slider/gallery.html', 'gallery.html'),
 #    ]
 
     dirs_to_scan = []
@@ -53,7 +53,7 @@ def autodiscover_templates():
                 dirs_to_scan.append(dir)
 
     for dir in dirs_to_scan:
-        found = glob.glob(os.path.join(dir, 'cmsplugin_gallery/*.html'))
+        found = glob.glob(os.path.join(dir, 'cmsplugin_s3slider/*.html'))
         for file in found:
             dir, file = os.path.split(file)
             key, value = os.path.join(dir.split('/')[-1], file), file
