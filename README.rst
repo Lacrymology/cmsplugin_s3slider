@@ -17,6 +17,7 @@ Requirements
 
 - django-inline-ordering http://pypi.python.org/pypi/django-inline-ordering/
 - easy-thumbnails http://pypi.python.org/pypi/easy-thumbnails/
+- sekizai http://pypi.python.org/pypi/django-sekizai
 
 Installation
 ------------
@@ -25,7 +26,7 @@ Installation
    (requirements will be installed automatically if you use ``pip`` 
    with ``-e https://Lacrymology@github.com/Lacrymology/cmsplugin_s3slider.git``
 
-2. Add ``cmsplugin_s3slider`` to your installed apps
+2. Add ``cmsplugin_s3slider``, ``easy_thumbnails`` and ``sekizai`` to your installed apps
 
 3. Run ``syncdb`` or ``migrate cmsplugin_s3slider`` (if you use South). 
 
@@ -33,8 +34,10 @@ Installation
    Make sure it is writable especially when running in embedded mode on production server. 
 
 5. Very simple template is included with the project. It comes with the
-   s3Slider gallery plugin javascript packed, and ready to work. You can
-   modify the template to fix the css to suit your needs.
+   s3Slider gallery plugin javascript packed, and ready to work.
+   It also expects you to have a "css" and a "javascript" sekizai blocks
+   rendered in your template.
+   You can modify the template to fix the css to suit your needs.
 
 Usage
 -----
