@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='cmsplugin_s3slider',
-    version='0.0.1',
+    version='0.0.2',
     author='Tomas Neme',
     author_email='lacrymology@gmail.com',
     url='http://github.com/Lacrymology',
@@ -19,6 +19,6 @@ setup(
     install_requires = [
         'django-inline-ordering>=0.1.1',
         'easy-thumbnails',
-        'sekizai',
+        'django-sekizai',
         ]
 )
