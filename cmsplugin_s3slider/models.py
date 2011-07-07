@@ -14,13 +14,23 @@ TEMPLATE_CHOICES = localdata.TEMPLATE_CHOICES
 
 class GalleryPlugin(CMSPlugin):
 
-    template = models.CharField(max_length=255,
-                                choices=TEMPLATE_CHOICES,
-                                default='cmsplugin_s3slider/gallery.html',
-                                editable=len(TEMPLATE_CHOICES) > 1)
+    template = models.CharField(
+        max_length=255,
+        choices=TEMPLATE_CHOICES,
+        default='cmsplugin_s3slider/gallery.html',
+        editable=len(TEMPLATE_CHOICES) > 1)
 
+    timeout = models.IntegerField(default=3000);
+
+    def width(self):
+        return max([i.src_width for i in self.image_set.all()])
+    def height(self):
+        return max([i.src_height for i in self.image_set.all()])
+    
     def __unicode__(self):
-        return _(u'%(count)d image(s) in gallery') % {'count': self.image_set.count()}
+        return _(u'%(count)d image(s) in gallery') % {
+            'count': self.image_set.count()
+            }
 
 
 class Image(Orderable):
@@ -35,8 +45,24 @@ class Image(Orderable):
                             width_field='src_width')
     src_height = models.PositiveSmallIntegerField(editable=False, null=True)
     src_width = models.PositiveSmallIntegerField(editable=False, null=True)
+    alt = models.CharField(
+        max_length=127,
+        blank=True,
+        )
+
+    position_options = (
+        ('top', _('Top')),
+        ('bottom', _('Bottom')),
+        ('left', _('Left')),
+        ('right', _('Right')),
+        )
+    textPosition = models.CharField(
+        default = 'bottom',
+        choices = position_options,
+        max_length = max([len(v) for (k,v) in position_options]),
+        )
     title = models.CharField(max_length=255, blank=True)
-    alt = models.TextField(blank=True)
+    text = models.CharField(max_length=2047, blank=True)
 
     def __unicode__(self):
         return self.title or self.alt or str(self.pk)
