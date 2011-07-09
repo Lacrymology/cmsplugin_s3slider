@@ -24,6 +24,7 @@ setup(
     package_data={
         'cmsplugin_s3slider': [
             'templates/cmsplugin_s3slider/*.html',
+            'media/js/*.js'
         ]
     },
 )
