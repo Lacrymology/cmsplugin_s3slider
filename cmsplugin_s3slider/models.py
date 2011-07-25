@@ -20,8 +20,17 @@ class GalleryPlugin(CMSPlugin):
         default='cmsplugin_s3slider/gallery.html',
         editable=len(TEMPLATE_CHOICES) > 1)
 
-    timeout = models.IntegerField(default=3000);
-
+    timeout = models.IntegerField(default=3000)
+    
+    POSITIONS = (
+        ('left', _('Left')),
+        ('right', _('Right')),
+        ('center', _('Center')),
+        )
+    alignment = models.CharField(max_length=8,
+                                 choices=POSITIONS,
+                                 default='left')
+    
     def width(self):
         return max([i.src_width for i in self.image_set.all()])
     def height(self):
