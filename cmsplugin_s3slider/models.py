@@ -11,7 +11,6 @@ localdata = threading.local()
 localdata.TEMPLATE_CHOICES = utils.autodiscover_templates()
 TEMPLATE_CHOICES = localdata.TEMPLATE_CHOICES
 
-
 class GalleryPlugin(CMSPlugin):
 
     template = models.CharField(
@@ -43,7 +42,6 @@ class GalleryPlugin(CMSPlugin):
 
 
 class Image(Orderable):
-
     def get_media_path(self, filename):
         pages = self.gallery.placeholder.page_set.all()
         return pages[0].get_media_path(filename)
