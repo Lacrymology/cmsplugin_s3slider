@@ -47,9 +47,10 @@ class Image(Orderable):
         return pages[0].get_media_path(filename)
 
     gallery = models.ForeignKey(GalleryPlugin)
-    src = models.ImageField(upload_to=get_media_path,
+    image = models.ImageField(upload_to=get_media_path,
                             height_field='src_height',
                             width_field='src_width')
+ 
     src_height = models.PositiveSmallIntegerField(editable=False, null=True)
     src_width = models.PositiveSmallIntegerField(editable=False, null=True)
     alt = models.CharField(
