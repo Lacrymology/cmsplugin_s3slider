@@ -43,8 +43,7 @@ class GalleryPlugin(CMSPlugin):
 
 class Image(Orderable):
     def get_media_path(self, filename):
-        pages = self.gallery.placeholder.page_set.all()
-        return pages[0].get_media_path(filename)
+        return self.gallery.get_media_path(filename)
 
     gallery = models.ForeignKey(GalleryPlugin)
     src = models.ImageField(upload_to=get_media_path,
