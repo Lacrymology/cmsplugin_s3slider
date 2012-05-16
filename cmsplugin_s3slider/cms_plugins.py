@@ -15,7 +15,6 @@ class CMSGalleryPlugin(CMSPluginBase):
     render_template = 'cmsplugin_s3slider/gallery.html'
 
     def render(self, context, instance, placeholder):
-#        context = SekizaiContext(context)
         context.update({
                         'images': instance.image_set.all(),
                         'gallery': instance,
