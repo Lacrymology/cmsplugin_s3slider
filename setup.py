@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='cmsplugin_s3slider',
-    version='0.0.2',
+    version='0.0.3',
     author='Tomas Neme',
     author_email='lacrymology@gmail.com',
     url='http://github.com/Lacrymology',
