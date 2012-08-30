@@ -58,3 +58,8 @@ in settings.py using following setting:
     )
 
 Embed as a typical plugin.
+
+Changelog
+---------
+
+0.0.3: add links (internal or external)
