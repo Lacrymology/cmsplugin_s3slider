@@ -64,9 +64,9 @@
 }
 </style>
 {% endaddtoblock %}
-{% addtoblock "javascript" %}<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>{% endaddtoblock %}
-{% addtoblock "javascript" %}<script type="text/javascript" src="{{ MEDIA_URL }}cmsplugin_s3slider/js/s3Slider.js"></script>{% endaddtoblock %}
-{% addtoblock "javascript" %}
+{% addtoblock "js" %}<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}cmsplugin_s3slider/js/s3Slider.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}
 <script type="text/javascript">
     $s3jQ(document).ready(function() {
         $s3jQ('#{{ slider_id }}').s3Slider({
@@ -80,7 +80,7 @@
   <ul id="{{ slider_id }}Content">
     {% for image in images %}
     <li class="{{ slider_id }}Image">
-      <a href="#"><img src="{{ image.src.url }}" alt="1" /></a>
+      <a href="{{ image.link }}"><img src="{{ image.image.url }}" alt="{{ image.alt }}" /></a>
       <span class="{{ image.textPosition }}">
         <strong>{{ image.title }}</strong><br />
         {{ image.text }}
