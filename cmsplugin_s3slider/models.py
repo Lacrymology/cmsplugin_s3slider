@@ -32,13 +32,13 @@ class GalleryPlugin(CMSPlugin):
                                  default='left')
     
     def width(self):
-        return max([i.src_width for i in self.image_set.all()])
+        return max([i.src_width for i in self.images.all()])
     def height(self):
-        return max([i.src_height for i in self.image_set.all()])
-    
+        return max([i.src_height for i in self.images.all()])
+
     def __unicode__(self):
         return _(u'%(count)d image(s) in gallery') % {
-            'count': self.image_set.count()
+            'count': self.images.count()
             }
 
 
@@ -46,7 +46,7 @@ class Image(Orderable):
     def get_media_path(self, filename):
         return self.gallery.get_media_path(filename)
 
-    gallery = models.ForeignKey(GalleryPlugin)
+    gallery = models.ForeignKey(GalleryPlugin, related_name='images')
     image = models.ImageField(upload_to=get_media_path,
                               height_field='src_height',
                               width_field='src_width', blank=True, null=True,

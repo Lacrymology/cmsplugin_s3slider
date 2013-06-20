@@ -16,7 +16,7 @@ class CMSGalleryPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context.update({
-                        'images': instance.image_set.all(),
+                        'images': instance.images.all(),
                         'gallery': instance,
                         'slider_id': "slider%d"%instance.pk,
                        })
