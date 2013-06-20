@@ -36,6 +36,12 @@ class GalleryPlugin(CMSPlugin):
     def height(self):
         return max([i.src_height for i in self.images.all()])
 
+    def copy_relations(self, old_instance):
+        for image in old_instance.images.all():
+            image.pk = None
+            image.gallery = self
+            image.save()
+
     def __unicode__(self):
         return _(u'%(count)d image(s) in gallery') % {
             'count': self.images.count()
