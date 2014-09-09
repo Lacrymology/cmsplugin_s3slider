@@ -1,4 +1,5 @@
 import threading
+from os import path
 
 from cms.models import CMSPlugin, Page
 from django.db import models
@@ -7,7 +8,9 @@ from inline_ordering.models import Orderable
 import templatefinder
 
 localdata = threading.local()
-localdata.TEMPLATE_CHOICES = templatefinder.find_all_templates('cmsplugin_s3slider/*.html')
+localdata.TEMPLATE_CHOICES = [
+    (f, path.splitext(path.basename(f))[0])
+    for f in templatefinder.find_all_templates('cmsplugin_s3slider/*.html')]
 TEMPLATE_CHOICES = localdata.TEMPLATE_CHOICES
 
 class GalleryPlugin(CMSPlugin):
