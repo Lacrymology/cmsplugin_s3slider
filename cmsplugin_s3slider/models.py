@@ -31,12 +31,16 @@ class GalleryPlugin(CMSPlugin):
     alignment = models.CharField(max_length=8,
                                  choices=POSITIONS,
                                  default='left')
-    
+
     def width(self):
+        if not self.image_set.count():
+            return 0
         return max([i.src_width for i in self.image_set.all()])
     def height(self):
+        if not self.image_set.count():
+            return 0
         return max([i.src_height for i in self.image_set.all()])
-    
+
     def __unicode__(self):
         return _(u'%(count)d image(s) in gallery') % {
             'count': self.image_set.count()
