@@ -20,6 +20,7 @@ setup(
         'django-inline-ordering>=0.1.1',
         'easy-thumbnails',
         'django-sekizai',
+        'django-template-finder',
         ],
     package_data={
         'cmsplugin_s3slider': [
