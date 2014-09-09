@@ -5,11 +5,10 @@ from cms.models import CMSPlugin, Page
 from django.db import models
 from django.utils.translation import ugettext_lazy as _, get_language
 from inline_ordering.models import Orderable
-
-import utils
+import templatefinder
 
 localdata = threading.local()
-localdata.TEMPLATE_CHOICES = utils.autodiscover_templates()
+localdata.TEMPLATE_CHOICES = templatefinder.find_all_templates('cmsplugin_s3slider/*.html')
 TEMPLATE_CHOICES = localdata.TEMPLATE_CHOICES
 
 class GalleryPlugin(CMSPlugin):
@@ -21,7 +20,7 @@ class GalleryPlugin(CMSPlugin):
         editable=len(TEMPLATE_CHOICES) > 1)
 
     timeout = models.IntegerField(default=3000)
-    
+
     POSITIONS = (
         ('left', _('Left')),
         ('right', _('Right')),
